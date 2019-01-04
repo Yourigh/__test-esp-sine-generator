@@ -82,7 +82,7 @@ void loop() {
     Serial.write("*");
   }
   a++;
-  delayMicroseconds(12);
+  delayMicroseconds(14); //15 is making gaps (edit 2)
 }
 
 bool writeDAC(uint16_t DAC) {
