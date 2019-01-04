@@ -3,7 +3,7 @@
 #include "i2s.h"
 #include "i2s_reg.h"
 
-void writeDAC(uint16_t DAC);
+bool writeDAC(uint16_t DAC);
 
 uint16_t sine[256] = {
   0x0000, 0x0324, 0x0647, 0x096a, 0x0c8b, 0x0fab, 0x12c8, 0x15e2,
@@ -85,7 +85,7 @@ void loop() {
   delayMicroseconds(12);
 }
 
-void writeDAC(uint16_t DAC) {
+bool writeDAC(uint16_t DAC) {
  for (uint8_t i=0;i<32;i++) { 
   i2sACC=i2sACC<<1;
   if(DAC >= err) {
@@ -98,4 +98,5 @@ void writeDAC(uint16_t DAC) {
   }
  }
  bool flag=i2s_write_sample(i2sACC);
+ return flag;
 }
